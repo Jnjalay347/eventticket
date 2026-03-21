@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Booking {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;

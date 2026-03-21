@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TicketType {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ticketTypeId;

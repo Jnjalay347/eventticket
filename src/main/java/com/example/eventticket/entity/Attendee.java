@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Attendee {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long attendeeId;

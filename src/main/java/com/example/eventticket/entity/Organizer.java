@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Organizer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long organizerId;
