@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
-
     boolean existsByAttendee_AttendeeIdAndTicketType_TicketTypeId(Long attendeeId, Long ticketTypeId);
 
+    // Revenue Calculation: GET /api/events/{id}/revenue
     @Query("""
            SELECT SUM(t.price)
            FROM Booking b

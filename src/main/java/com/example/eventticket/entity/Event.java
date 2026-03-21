@@ -20,6 +20,7 @@ public class Event {
     private Long eventId;
 
     private String title;
+
     private String description;
 
     private LocalDateTime eventDate;

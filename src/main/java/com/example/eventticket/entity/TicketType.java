@@ -19,7 +19,9 @@ public class TicketType {
     private Long ticketTypeId;
 
     private String name;
+
     private Double price;
+
     private Integer quantityAvailable;
 
     @ManyToOne

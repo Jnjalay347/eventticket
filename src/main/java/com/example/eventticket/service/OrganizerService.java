@@ -7,9 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrganizerService {
-
     private final OrganizerRepository organizerRepository;
 
+    // Class Constructor
     public OrganizerService(OrganizerRepository organizerRepository) {
         this.organizerRepository = organizerRepository;
     }

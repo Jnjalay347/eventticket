@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RevenueDTO {
-
     private String eventTitle;
     private Double totalRevenue;
 }

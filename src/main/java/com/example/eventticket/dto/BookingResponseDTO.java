@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingResponseDTO {
-
     private String bookingReference;
     private LocalDateTime bookingDate;
     private String status;

@@ -8,7 +8,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventResponseDTO {
-
     private String title;
     private String description;
     private List<TicketTypesDTO> ticketTypes;

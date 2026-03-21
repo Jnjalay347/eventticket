@@ -124,12 +124,12 @@ import java.util.List;
 
 @Service
 public class EventService {
-
     private final EventRepository eventRepository;
     private final OrganizerRepository organizerRepository;
     private final VenueRepository venueRepository;
     private final BookingRepository bookingRepository;
 
+    // Class Constructor
     public EventService(EventRepository eventRepository,
                         OrganizerRepository organizerRepository,
                         VenueRepository venueRepository,
@@ -142,12 +142,15 @@ public class EventService {
 
     @Transactional
     public EventResponseDTO createEvent(EventRequestDTO request) {
+        // Retrieves organizer
         Organizer organizer = organizerRepository.findById(request.getOrganizerId())
                 .orElseThrow(() -> new RuntimeException("Organizer not found."));
 
+        // Retrieves venue
         Venue venue = venueRepository.findById(request.getVenueId())
                 .orElseThrow(() -> new RuntimeException("Venue not found."));
 
+        // Creates new event
         Event event = new Event();
         event.setTitle(request.getTitle());
         event.setDescription(request.getDescription());
@@ -156,6 +159,7 @@ public class EventService {
         event.setOrganizer(organizer);
         event.setVenue(venue);
 
+        // Saves event information
         Event savedEvent = eventRepository.save(event);
         return mapToEventResponseDTO(savedEvent);
     }
@@ -174,18 +178,22 @@ public class EventService {
     }
 
     public RevenueDTO getRevenueForEvent(Long eventId) {
+        // Retrieves event
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found."));
 
+        // Calculate total revenue from bookings for event
         Double revenue = bookingRepository.calculateRevenue(eventId);
         if (revenue == null) {
             revenue = 0.0;
         }
 
+        // Returns: Event title + total confirmed revenue
         return new RevenueDTO(event.getTitle(), revenue);
     }
 
     private EventResponseDTO mapToEventResponseDTO(Event event) {
+        // Converts ticket types to a list of TicketTypesDTO
         List<TicketTypesDTO> ticketTypeDTOs = event.getTicketTypes() == null
                 ? List.of()
                 : event.getTicketTypes().stream()
@@ -196,6 +204,7 @@ public class EventService {
                 ))
                 .toList();
 
+        // Returns: Event details + list of TicketTypeDTO + organizer name + venue name
         return new EventResponseDTO(
                 event.getTitle(),
                 event.getDescription(),

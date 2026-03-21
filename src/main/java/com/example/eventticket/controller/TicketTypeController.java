@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/ticket-types")
 public class TicketTypeController {
-
     private final TicketTypeService ticketTypeService;
 
+    // Class Constructor
     public TicketTypeController(TicketTypeService ticketTypeService) {
         this.ticketTypeService = ticketTypeService;
     }

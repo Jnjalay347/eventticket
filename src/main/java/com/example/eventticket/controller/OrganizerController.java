@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/organizers")
 public class OrganizerController {
-
     private final OrganizerService organizerService;
 
+    // Class Constructor
     public OrganizerController(OrganizerService organizerService) {
         this.organizerService = organizerService;
     }
 
+    // POST /api/organizers
     @PostMapping
     public ResponseEntity<Organizer> createOrganizer(@RequestBody Organizer organizer) {
         Organizer savedOrganizer = organizerService.createOrganizer(organizer);

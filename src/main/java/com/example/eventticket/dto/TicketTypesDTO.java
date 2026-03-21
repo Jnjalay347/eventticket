@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TicketTypesDTO {
-
     private String name;
     private Double price;
     private Integer quantityAvailable;

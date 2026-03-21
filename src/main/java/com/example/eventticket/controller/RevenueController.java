@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/events")
 public class RevenueController {
-
     private final EventService eventService;
 
+    // Class Constructor
     public RevenueController(EventService eventService) {
         this.eventService = eventService;
     }
 
+    // GET /api/events/{id}/revenue
     @GetMapping("/{id}/revenue")
     public ResponseEntity<RevenueDTO> getRevenue(@PathVariable Long id) {
         return ResponseEntity.ok(eventService.getRevenueForEvent(id));

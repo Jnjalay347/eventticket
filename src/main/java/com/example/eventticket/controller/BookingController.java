@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
-
     private final BookingService bookingService;
 
+    // Class Constructor
     public BookingController(BookingService bookingService) {
         this.bookingService = bookingService;
     }
 
+    // POST /api/bookings
     @PostMapping
     public ResponseEntity<BookingResponseDTO> createBooking(@RequestBody BookingRequestDTO request) {
         BookingResponseDTO response = bookingService.createBooking(
@@ -26,6 +27,7 @@ public class BookingController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    // PUT /api/bookings/{id}/cancel
     @PutMapping("/{id}/cancel")
     public ResponseEntity<BookingResponseDTO> cancelBooking(@PathVariable Long id) {
         return ResponseEntity.ok(bookingService.cancelBooking(id));

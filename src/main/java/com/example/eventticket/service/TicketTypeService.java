@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TicketTypeService {
-
     private final TicketTypeRepository ticketTypeRepository;
     private final EventRepository eventRepository;
 
+    // Class Constructor
     public TicketTypeService(TicketTypeRepository ticketTypeRepository,
                              EventRepository eventRepository) {
         this.ticketTypeRepository = ticketTypeRepository;
@@ -21,9 +21,11 @@ public class TicketTypeService {
 
     @Transactional
     public TicketType createTicketType(Long eventId, TicketType ticketType) {
+        // Retrieves event
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new RuntimeException("Event not found."));
 
+        // Checks if ticket price is >= 0
         if (ticketType.getPrice() == null || ticketType.getPrice() < 0) {
             throw new RuntimeException("Ticket price must be greater than or equal to 0.");
         }
